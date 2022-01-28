@@ -5,6 +5,10 @@ import os
 app = Flask(__name__)
 
 
+@app.route('/')
+def home():
+    return 'It works!'
+
 @app.route('/contact/<name>/<email>/<subject>/<message>', methods=['GET', 'POST'])
 def contact(name, email, subject, message):
     MY_EMAIL = os.environ.get('MY_EMAIL')
