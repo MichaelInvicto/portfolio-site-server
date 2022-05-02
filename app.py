@@ -29,6 +29,22 @@ def contact(name, email, subject, message):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route('/circle/<radius>', methods=['GET', 'POST'])
+def get_diameter(radius):
+    diameter = float(radius) * 2
+    response = jsonify({"diameter": diameter})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
+@app.route('/triangle/<height>/<base>', methods=['GET', 'POST'])
+def get_area(height, base):
+    area = (float(base) * float(height)) / 2
+    response = jsonify({"area": area})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
+
 
 if __name__ == '__main__':
     app.run(debug=False)
